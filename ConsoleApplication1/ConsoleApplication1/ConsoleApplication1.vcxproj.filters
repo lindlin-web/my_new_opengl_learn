@@ -21,5 +21,58 @@
     <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="colors.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="colors.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="light_cube.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="light_cube.fs">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ConsoleApplication1.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="container.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="container2.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="container2_specular.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
