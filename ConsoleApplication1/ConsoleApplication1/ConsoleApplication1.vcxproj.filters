@@ -70,6 +70,12 @@
     <None Include="model_loading.fs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="depth_testing.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="depth_testing.fs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">
