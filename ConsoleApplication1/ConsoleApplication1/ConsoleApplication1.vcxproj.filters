@@ -24,9 +24,6 @@
     <ClCompile Include="Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="mesh.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -65,6 +62,12 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="light_cube.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="model_loading.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="model_loading.fs">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
