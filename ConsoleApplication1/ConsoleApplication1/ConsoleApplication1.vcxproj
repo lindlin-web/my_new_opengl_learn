@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\peace\ConsoleApplication1\ConsoleApplication1\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\peace\ConsoleApplication1\ConsoleApplication1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\peace\newOpengl_learn_from_lind\ConsoleApplication1\ConsoleApplication1\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\peace\newOpengl_learn_from_lind\ConsoleApplication1\ConsoleApplication1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,10 +134,13 @@
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="mesh.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
