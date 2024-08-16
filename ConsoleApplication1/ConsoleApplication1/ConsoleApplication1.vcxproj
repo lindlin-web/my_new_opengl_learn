@@ -145,6 +145,7 @@
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="anotherSingleColor.fs" />
     <None Include="colors.fs" />
     <None Include="colors.vs" />
     <None Include="depth_testing.fs" />
@@ -155,6 +156,7 @@
     <None Include="model_loading.vs" />
     <None Include="shader.fs" />
     <None Include="shader.vs" />
+    <None Include="shaderSingleColor.fs" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc" />

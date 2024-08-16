@@ -76,6 +76,12 @@
     <None Include="depth_testing.fs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="shaderSingleColor.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="anotherSingleColor.fs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">
