@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="anotherSingleColor.fs" />
+    <None Include="blend.fs" />
+    <None Include="blend.vs" />
     <None Include="colors.fs" />
     <None Include="colors.vs" />
     <None Include="depth_testing.fs" />
@@ -162,9 +164,11 @@
     <ResourceCompile Include="ConsoleApplication1.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="blending_transparent_window.png" />
     <Image Include="container.jpg" />
     <Image Include="container2.png" />
     <Image Include="container2_specular.png" />
+    <Image Include="grass.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
