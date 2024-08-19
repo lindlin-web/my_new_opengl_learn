@@ -76,6 +76,8 @@ int main() {
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_STENCIL_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDepthFunc(GL_LESS);
 
     Shader shader("blend.vs", "blend.fs");
@@ -190,7 +192,7 @@ int main() {
     // -------------
     unsigned int cubeTexture = loadTexture("marble.jpg");
     unsigned int floorTexture = loadTexture("metal.png");
-    unsigned int transparentTexture = loadTexture("grass.png");
+    unsigned int transparentTexture = loadTexture("blending_transparent_window.png");
 
 
     vector<glm::vec3> vegetation;
