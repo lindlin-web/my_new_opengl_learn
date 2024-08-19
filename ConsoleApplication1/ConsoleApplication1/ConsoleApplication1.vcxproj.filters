@@ -88,6 +88,12 @@
     <None Include="blend.fs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="quad.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="quad.fs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">

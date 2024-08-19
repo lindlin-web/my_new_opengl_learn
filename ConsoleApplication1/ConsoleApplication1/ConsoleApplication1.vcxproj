@@ -156,6 +156,8 @@
     <None Include="light_cube.vs" />
     <None Include="model_loading.fs" />
     <None Include="model_loading.vs" />
+    <None Include="quad.fs" />
+    <None Include="quad.vs" />
     <None Include="shader.fs" />
     <None Include="shader.vs" />
     <None Include="shaderSingleColor.fs" />
