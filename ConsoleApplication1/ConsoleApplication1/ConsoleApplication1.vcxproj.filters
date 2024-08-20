@@ -94,6 +94,18 @@
     <None Include="quad.fs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="skybox.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="skybox.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="cubemaps.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="cubemaps.fs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">

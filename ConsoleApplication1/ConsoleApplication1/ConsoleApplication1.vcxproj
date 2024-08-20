@@ -150,6 +150,10 @@
     <None Include="blend.vs" />
     <None Include="colors.fs" />
     <None Include="colors.vs" />
+    <None Include="cubemaps.fs" />
+    <None Include="cubemaps.vs" />
+    <None Include="skybox.fs" />
+    <None Include="skybox.vs" />
     <None Include="depth_testing.fs" />
     <None Include="depth_testing.vs" />
     <None Include="light_cube.fs" />
