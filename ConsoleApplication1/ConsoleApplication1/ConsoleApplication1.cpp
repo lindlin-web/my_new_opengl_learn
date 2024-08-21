@@ -294,6 +294,8 @@ int main() {
     cubeShader.setInt("skybox", 0);
     unsigned int cubeTexture = loadTexture("container2.png");
 
+    unsigned int matricesIndex = glGetUniformBlockIndex(cubeShader.ID, "Matrices");
+    glUniformBlockBinding(cubeShader.ID, matricesIndex, 0);
 
     unsigned int VAO, VBO;
     glGenVertexArrays(1,&VAO);
@@ -303,6 +305,21 @@ int main() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), skyboxVertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+    unsigned int uboMatrices;
+    glGenBuffers(1, &uboMatrices);
+    glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
+    glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), NULL, GL_STATIC_DRAW);
+
+    glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
+
+    glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
+    glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(projection));
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+    
+
 
     Shader skyboxShader("skybox.vs", "skybox.fs");
     skyboxShader.use();
@@ -340,23 +357,28 @@ int main() {
         // draw a cube...........
         cubeShader.use();
         glm::mat4 model = glm::mat4(1.0);
-        glm::mat4 view = camera.GetViewMatrix();
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        cubeShader.setMat4("view", view);
-        cubeShader.setMat4("projection", projection);
+        
+
+
+
         cubeShader.setMat4("model", model);
         glBindVertexArray(cubeVAO);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
         cubeShader.setVec3("cameraPos", camera.Position);
+        glm::mat4 view = camera.GetViewMatrix();
+        glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
+        glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(view));
+        glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
-        glDrawArrays(GL_POINTS, 0, 36);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
         
         glDepthFunc(GL_LEQUAL);
         
 
         // draw scene as normal
         skyboxShader.use();
+
         view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
         projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         skyboxShader.setMat4("view", view);

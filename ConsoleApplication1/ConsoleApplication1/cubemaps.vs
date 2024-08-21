@@ -6,13 +6,14 @@ out vec3 Normal;
 out vec3 Position;
 
 uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
+
+layout(std140) uniform Matrices {
+	mat4 projection;
+	mat4 view;
+};
 
 void main() {
-
 	Normal = mat3(transpose(inverse(model))) * aNormal;
 	Position = vec3(model * vec4(aPos, 1.0));
 	gl_Position = projection * view * vec4(Position, 1.0);
-	 gl_PointSize = gl_Position.z;   
 }  
