@@ -125,6 +125,96 @@ int main() {
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
     };
 
+    float positionsFor[] = {
+        // positions        
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+
+        -0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f,
+
+        -0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f, -0.5f,
+
+        -0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f, -0.5f,
+    };
+
+    float normalFor[] = {
+        // texture Coords
+        0.0f,  0.0f, -1.0f,
+        0.0f,  0.0f, -1.0f,
+        0.0f,  0.0f, -1.0f,
+        0.0f,  0.0f, -1.0f,
+        0.0f,  0.0f, -1.0f,
+        0.0f,  0.0f, -1.0f,
+
+        0.0f,  0.0f, 1.0f,
+        0.0f,  0.0f, 1.0f,
+        0.0f,  0.0f, 1.0f,
+        0.0f,  0.0f, 1.0f,
+        0.0f,  0.0f, 1.0f,
+        0.0f,  0.0f, 1.0f,
+
+       -1.0f,  0.0f,  0.0f,
+       -1.0f,  0.0f,  0.0f,
+       -1.0f,  0.0f,  0.0f,
+       -1.0f,  0.0f,  0.0f,
+       -1.0f,  0.0f,  0.0f,
+       -1.0f,  0.0f,  0.0f,
+
+        1.0f,  0.0f,  0.0f,
+        1.0f,  0.0f,  0.0f,
+        1.0f,  0.0f,  0.0f,
+        1.0f,  0.0f,  0.0f,
+        1.0f,  0.0f,  0.0f,
+        1.0f,  0.0f,  0.0f,
+
+        0.0f, -1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f,
+
+        0.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  0.0f
+    };
+
     float skyboxVertices[] = {
         // positions          
         -1.0f,  1.0f, -1.0f,
@@ -175,16 +265,34 @@ int main() {
     glBindVertexArray(cubeVAO);
     glGenBuffers(1, &cubeVBO);
     glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), &cubeVertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), NULL, GL_STATIC_DRAW);
+    // get pointer
+    /*void* ptr = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+    memcpy(ptr, cubeVertices, sizeof(cubeVertices));
+    glUnmapBuffer(GL_ARRAY_BUFFER);*/
+
+    // fill buffer
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(positionsFor), &positionsFor);
+    glBufferSubData(GL_ARRAY_BUFFER, sizeof(positionsFor), sizeof(normalFor), &normalFor);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(sizeof(positionsFor)));
+
+
+
+
+
+
+    /*glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));*/
 
     Shader cubeShader("cubemaps.vs", "cubemaps.fs");
     cubeShader.use();
     cubeShader.setInt("skybox", 0);
-    //unsigned int cubeTexture = loadTexture("container2.png");
+    unsigned int cubeTexture = loadTexture("container2.png");
 
 
     unsigned int VAO, VBO;
@@ -213,6 +321,7 @@ int main() {
     unsigned int cubemapTexture = loadCubeMap(faces);
 
 
+    glEnable(GL_PROGRAM_POINT_SIZE);
     while (!glfwWindowShouldClose(window)) {
         
         // per-frame time logic
@@ -241,7 +350,7 @@ int main() {
         glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
         cubeShader.setVec3("cameraPos", camera.Position);
 
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glDrawArrays(GL_POINTS, 0, 36);
         
         glDepthFunc(GL_LEQUAL);
         
