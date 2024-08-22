@@ -106,6 +106,15 @@
     <None Include="cubemaps.fs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="giometry.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="giometry.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="giometry.gs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">
